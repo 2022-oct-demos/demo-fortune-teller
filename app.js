@@ -1,5 +1,6 @@
 /* Get DOM Elements */
 const submitBtn = document.getElementById('submit');
+const resetBtn = document.getElementById('reset');
 const promptSection = document.getElementById('prompt');
 const fortuneSection = document.getElementById('fortune');
 const answerP = document.getElementById('answer');
@@ -45,11 +46,12 @@ const answers = [
     'Very doubtful',
 ];
 
-submitBtn.addEventListener('click', () => {
-    // add the hide class to prompt
+function toggleSections() {
     promptSection.classList.toggle('hide');
-    // remove the hide class from fortune
     fortuneSection.classList.toggle('hide');
+}
+submitBtn.addEventListener('click', () => {
+    toggleSections();
 
     // generate a random number between 0 and the length
     // of the array minus 1
@@ -59,3 +61,5 @@ submitBtn.addEventListener('click', () => {
     // set the text content to the random choice
     answerP.textContent = randomChoice;
 });
+
+resetBtn.addEventListener('click', toggleSections);
